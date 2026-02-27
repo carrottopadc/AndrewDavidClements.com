@@ -1,0 +1,346 @@
+:root {
+    /* Updated Palette to mesh with Stanford Red */
+    --bg-color: #f5f5f7;         /* Light Cool Gray - Modern & Clean */
+    --surface-color: #ffffff;    /* White */
+    --text-main: #2b2b2b;        /* Deep Charcoal */
+    --text-dim: #555555;         /* Medium Gray */
+    --accent-color: #8C1515;     /* Stanford Cardinal Red */
+    --border-color: #2b2b2b;     /* Matching Charcoal Border */
+    
+    /* Layout Variables */
+    --border-width: 2px;
+    --shadow-offset: 4px;        /* Hard shadow depth */
+    
+    --font-heading: 'Courier New', Courier, monospace; /* Raw engineering feel */
+    --font-body: 'Helvetica', 'Arial', sans-serif;     /* Readable body text */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fix for "loading bar" scroll issue */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background-image: radial-gradient(#d0d0d0 1px, transparent 1px);
+    background-size: 20px 20px; /* Subtle engineering grid */
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 10px; }
+h2 { font-size: 1.8rem; margin-bottom: 20px; border-bottom: var(--border-width) solid var(--border-color); padding-bottom: 10px; }
+h3 { font-size: 1.2rem; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Utilities */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section { padding: 80px 0; }
+
+/* Buttons - Hard Tech Style */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--surface-color);
+    border: var(--border-width) solid var(--border-color);
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    transition: transform 0.1s, box-shadow 0.1s;
+    margin-right: 15px;
+}
+
+.btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: calc(var(--shadow-offset) + 1px) calc(var(--shadow-offset) + 1px) 0px var(--border-color);
+}
+
+.btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--border-color);
+}
+
+.primary { background: var(--accent-color); color: #fff; }
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--surface-color);
+    border-bottom: var(--border-width) solid var(--border-color);
+    z-index: 100;
+    padding: 15px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.2rem;
+    background: var(--text-main);
+    color: var(--surface-color);
+    padding: 5px 10px;
+}
+
+.nav-links { display: flex; gap: 25px; }
+.nav-links a {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.nav-links a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.hero-content {
+    max-width: 800px;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 30px;
+}
+
+.label {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+}
+
+.hero .subtitle { 
+    font-family: var(--font-body);
+    font-size: 1.5rem; 
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    border: none;
+    font-weight: 400;
+}
+
+/* About Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.about-text p { margin-bottom: 20px; font-size: 1.05rem; }
+
+.skills-container {
+    margin-top: 20px;
+    border: var(--border-width) solid var(--border-color);
+    background: var(--surface-color);
+    padding: 20px;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+}
+
+.skills-list li::before { content: "■ "; color: var(--accent-color); }
+
+.img-wrapper {
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+}
+
+.img-wrapper img { width: 100%; display: block; filter: grayscale(100%); }
+
+/* Projects - Tech Spec Style */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background: var(--surface-color);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-header {
+    background: var(--text-main);
+    color: var(--surface-color);
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--border-width) solid var(--border-color);
+}
+
+.project-title { font-size: 1rem; letter-spacing: 0.5px; }
+
+.project-links a {
+    color: var(--surface-color);
+    margin-left: 10px;
+    font-size: 1.1rem;
+}
+.project-links a:hover { color: var(--accent-color); }
+
+.project-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.project-desc { font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+
+.tech-stack {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+}
+.tech-label { font-family: var(--font-heading); font-size: 0.75rem; color: var(--text-dim); display: block; margin-bottom: 5px; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--font-heading); font-size: 0.8rem; }
+.project-tech li { background: #eee; padding: 2px 6px; border: 1px solid #ccc; }
+
+/* Experience - Timeline Spec */
+.job {
+    border-left: 2px solid var(--border-color);
+    padding-left: 25px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.job::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--accent-color);
+    border: 2px solid var(--border-color);
+}
+
+.job h3 { margin-bottom: 5px; }
+.company { color: var(--accent-color); }
+.job-date { 
+    font-family: var(--font-heading); 
+    font-size: 0.85rem; 
+    color: var(--text-dim); 
+    margin-bottom: 10px; 
+    display: block; 
+}
+
+/* Contact */
+/* --- Simplified Contact Styles --- */
+
+.contact-card {
+    background: var(--surface-color);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    /* Ensures content does not bleed out of the box */
+    overflow-wrap: break-word; 
+    word-wrap: break-word;
+}
+
+.email-link {
+    display: block;
+    font-family: var(--font-heading);
+    /* Adjusted font size for better fit on mobile */
+    font-size: clamp(1rem, 5vw, 1.5rem); 
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-bottom: 40px;
+    /* Prevents long emails from overflowing the border */
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+    color: var(--text-main);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.social-links a {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    color: var(--text-main);
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.footer {
+    text-align: center;
+    padding: 40px;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
+    .nav-links { display: none; }
+}
